@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import IngestData from './components/IngestData';
+import CreateAudience from './components/CreateAudience';
+import CampaignList from './components/CampaignList';
+import Login from './components/Login';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <h1>CRM Application</h1>
+        <Switch>
+          <Route path="/ingest-data" component={IngestData} />
+          <Route path="/create-audience" component={CreateAudience} />
+          <Route path="/campaigns" component={CampaignList} />
+          <Route path="/login" component={Login} />
+          <Route path="/" exact component={() => <div>Welcome to CRM</div>} />
+        </Switch>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
